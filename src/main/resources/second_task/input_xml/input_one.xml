@@ -1,0 +1,23 @@
+<fines>
+    <person>
+        <date_time>2020-05-05 15:39:03</date_time>
+        <first_name>donald</first_name>
+        <last_name>davis</last_name>
+        <type>SPEEDING</type>
+        <fine_amount>340.00</fine_amount>
+    </person>
+    <person>
+        <date_time>2020-03-05 23:35:03</date_time>
+        <first_name>brian</first_name>
+        <last_name>nichols</last_name>
+        <type>SPEEDING</type>
+        <fine_amount>4560.00</fine_amount>
+    </person>
+    <person>
+        <date_time>2014-03-05 11:32:03</date_time>
+        <first_name>ronald</first_name>
+        <last_name>lee</last_name>
+        <type>RED_LIGHT</type>
+        <fine_amount>1460.00</fine_amount>
+    </person>
+</fines>
