@@ -10,7 +10,7 @@ import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class SpecialXmlParserImpl{
+public class SpecialXmlParser {
     private static final Pattern personNamePattern = Pattern.compile("\\s+name\\s?+=\\s?+\"(\\S+)\"\\s*\\S*");
     private static final Pattern personSurnamePattern = Pattern.compile("\\s*?surname\\s?+=\\s?+\"(\\S+)\"\\s*\\S*");
     private static final Pattern personSurnameWithTagPattern = Pattern.compile("\\s*(surname\\s?+=\\s?+\"\\S+\")\\s*\\S*");

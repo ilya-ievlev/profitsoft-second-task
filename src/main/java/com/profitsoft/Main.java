@@ -1,7 +1,7 @@
 package com.profitsoft;
 
-import com.profitsoft.first_task.SpecialXmlParserImpl;
-import com.profitsoft.second_task.parsers.JacksonJavaToJsonParserImpl;
+import com.profitsoft.first_task.SpecialXmlParser;
+import com.profitsoft.second_task.parsers.JacksonJavaToJsonParser;
 import java.io.File;
 import java.io.IOException;
 
@@ -18,7 +18,7 @@ public class Main {
 
     private static void startFirstTask() {
         try {
-            SpecialXmlParserImpl.parseData(inputFileFirstTask);
+            SpecialXmlParser.parseData(inputFileFirstTask);
         } catch (IOException e) {
             e.printStackTrace(); //should be a logger
         }
@@ -26,7 +26,7 @@ public class Main {
 
     private static void startSecondTask() {
         try {
-            JacksonJavaToJsonParserImpl.parseData(inputFileFolderSecondTask);
+            JacksonJavaToJsonParser.parseData(inputFileFolderSecondTask);
         } catch (IOException e) {
             e.printStackTrace(); //should be a logger
         }

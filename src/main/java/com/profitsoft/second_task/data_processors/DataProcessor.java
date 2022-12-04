@@ -3,20 +3,20 @@ package com.profitsoft.second_task.data_processors;
 import com.profitsoft.second_task.dto.SortedOutputDataTransferObject;
 import com.profitsoft.second_task.models.Person;
 import com.profitsoft.second_task.models.ViolationType;
-import com.profitsoft.second_task.parsers.StaxParserXmlToJavaImpl;
+import com.profitsoft.second_task.parsers.StaxParserXmlToJava;
 
 import java.io.File;
 import java.util.*;
 
 import static java.util.stream.Collectors.toMap;
 
-public class DataProcessorImpl {
+public class DataProcessor {
 
     public static SortedOutputDataTransferObject processData(File inputFileFolder) {
         Map<Integer, Double> violationsOfSpeeding = new HashMap<>();
         Map<Integer, Double> violationsOfDrunkDriving = new HashMap<>();
         Map<Integer, Double> violationsOfRedLight = new HashMap<>();
-        List<Person> unsortedPersonList = StaxParserXmlToJavaImpl.parseData(inputFileFolder);
+        List<Person> unsortedPersonList = StaxParserXmlToJava.parseData(inputFileFolder);
         for (Person person : unsortedPersonList) {
             if (person.getViolationType().equals(ViolationType.DRUNK_DRIVING)) {
                 addFineToExistingAmountInMapOrAddNewYear(violationsOfDrunkDriving, person);

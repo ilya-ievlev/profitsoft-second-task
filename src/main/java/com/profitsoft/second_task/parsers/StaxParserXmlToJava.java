@@ -13,7 +13,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
-public class StaxParserXmlToJavaImpl {
+public class StaxParserXmlToJava {
 
     private static final String PERSON = "person";
     private static final String FINES = "fines";
