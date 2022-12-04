@@ -1,14 +1,15 @@
 package com.profitsoft;
 
-import com.profitsoft.first_task.impl.SpecialXmlParserImpl;
-import com.profitsoft.first_task.interfaces.SpecialXmlParser;
-import com.profitsoft.second_task.parsers.impl.JacksonJavaToJsonParserImpl;
-import com.profitsoft.second_task.parsers.interfaces.JacksonParser;
+import com.profitsoft.first_task.SpecialXmlParserImpl;
+import com.profitsoft.second_task.parsers.JacksonJavaToJsonParserImpl;
+import java.io.File;
+import java.io.IOException;
 
 
 public class Main {
-    private static final SpecialXmlParser specialXmlParser = new SpecialXmlParserImpl();
-    private static final JacksonParser jacksonParser = new JacksonJavaToJsonParserImpl();
+    private static final File inputFileFolderSecondTask = new File("src/main/resources/second_task/input_xml");
+    private static final File inputFileFirstTask = new File("src/main/resources/first_task_input_file.xml");
+
 
     public static void main(String[] args) {
         startFirstTask();
@@ -16,10 +17,18 @@ public class Main {
     }
 
     private static void startFirstTask() {
-        specialXmlParser.parseData();
+        try {
+            SpecialXmlParserImpl.parseData(inputFileFirstTask);
+        } catch (IOException e) {
+            e.printStackTrace(); //should be a logger
+        }
     }
 
     private static void startSecondTask() {
-        jacksonParser.parseData();
+        try {
+            JacksonJavaToJsonParserImpl.parseData(inputFileFolderSecondTask);
+        } catch (IOException e) {
+            e.printStackTrace(); //should be a logger
+        }
     }
 }

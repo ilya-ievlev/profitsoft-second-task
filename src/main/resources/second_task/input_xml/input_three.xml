@@ -20,4 +20,11 @@
         <type>SPEEDING</type>
         <fine_amount>14760.00</fine_amount>
     </person>
+    <person>
+        <date_time>2024-05-05 18:39:03</date_time>
+        <first_name>raymond</first_name>
+        <last_name>glover</last_name>
+        <type>DRUNK_DRIVING</type>
+        <fine_amount>200.00</fine_amount>
+    </person>
 </fines>

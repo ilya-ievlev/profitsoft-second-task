@@ -1,6 +1,5 @@
-package com.profitsoft.first_task.impl;
+package com.profitsoft.first_task;
 
-import com.profitsoft.first_task.interfaces.SpecialXmlParser;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -11,18 +10,16 @@ import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class SpecialXmlParserImpl implements SpecialXmlParser {
+public class SpecialXmlParserImpl{
+    private static final Pattern personNamePattern = Pattern.compile("\\s+name\\s?+=\\s?+\"(\\S+)\"\\s*\\S*");
+    private static final Pattern personSurnamePattern = Pattern.compile("\\s*?surname\\s?+=\\s?+\"(\\S+)\"\\s*\\S*");
+    private static final Pattern personSurnameWithTagPattern = Pattern.compile("\\s*(surname\\s?+=\\s?+\"\\S+\")\\s*\\S*");
+    private static final String SCANNER_DELIMITER_PATTERN = "(>)";
+    private static final String SRC_MAIN_RESOURCES_FIRST_TASK_OUTPUT_FILE_XML = "src/main/resources/first_task_output_file.xml";
 
-    private final File inputFile = new File("src/main/resources/first_task_input_file.xml");
-
-    private final Pattern personNamePattern = Pattern.compile("\\s+name\\s?+=\\s?+\"(\\S+)\"\\s*\\S*");
-    private final Pattern personSurnamePattern = Pattern.compile("\\s*?surname\\s?+=\\s?+\"(\\S+)\"\\s*\\S*");
-    private final Pattern personSurnameWithTagPattern = Pattern.compile("\\s*(surname\\s?+=\\s?+\"\\S+\")\\s*\\S*");
-
-    @Override
-    public void parseData() {
-        try (Scanner scanner = new Scanner(inputFile, StandardCharsets.UTF_8).useDelimiter("(>)");
-             FileWriter fileWriter = new FileWriter("src/main/resources/first_task_output_file.xml", Charset.defaultCharset())) {
+    public static void parseData(File inputFile) throws IOException {
+        try (Scanner scanner = new Scanner(inputFile, StandardCharsets.UTF_8).useDelimiter(SCANNER_DELIMITER_PATTERN);
+             FileWriter fileWriter = new FileWriter(SRC_MAIN_RESOURCES_FIRST_TASK_OUTPUT_FILE_XML, Charset.defaultCharset())) {
             while (scanner.hasNext()) {
                 StringBuilder scannerString = new StringBuilder(scanner.next());
                 Matcher surnameMatcher = personSurnamePattern.matcher(scannerString);
@@ -43,7 +40,7 @@ public class SpecialXmlParserImpl implements SpecialXmlParser {
                 fileWriter.write(scannerString.toString() + ">");
             }
         } catch (IOException e) {
-            e.printStackTrace();
+            throw new IOException("something went wrong with scanner or FileWriter in xml parser", e);
         }
     }
 }
